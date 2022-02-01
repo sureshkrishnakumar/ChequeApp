@@ -1,0 +1,87 @@
+<mat-dialog-content class="mat-typography">
+    <div fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex="70">
+            <address><b>MR. JOHN JONES</b><br>1645 DUNDAS ST. W, APT.27 <br> TORONTO, ON M6K 1V2</address>
+        </div>
+        <div fxFlex="30">DATE
+            <input type="text" class="input-date" value="{{chequeDateFormate[0]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[1]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[2]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[3]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[4]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[5]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[6]}}">
+            <input type="text" class="input-date" value="{{chequeDateFormate[7]}}">
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="15" class="label-pay-text align-pay">PAY TO THE ORDER OF</div>
+        <div fxFlex="60">
+            <mat-form-field class="input-name">
+                <input matInput [(ngModel)]="chequeData.userName">
+            </mat-form-field>
+        </div>
+        <div fxFlex="25" class="align-pay">
+            <span>$</span><input type="text" class="input-amount" value="{{convertAmount | number: '1.2-2'}}">
+        </div>
+
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="70">
+            <mat-form-field class="input-amount-text">
+                <input matInput style="text-transform: capitalize;" value="{{outputWords}}">
+            </mat-form-field>
+            <span>/100 Dollars</span>
+        </div>
+        <div fxFlex="5">
+            <i class="material-icons md-18">lock</i>
+        </div>
+        <div fxFlex="25">
+            <span><b>Security features included </b> Details on reverse</span>
+        </div>
+
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="10">
+            <div class="dollar-cls"><span class="material-icons md-48 icon-money" >attach_money</span></div>
+        </div>
+        <div fxFlex="90">
+            <address>
+                <b>
+                    FIRST BANK OF WIKI
+                </b><br>
+                Victoria Main Branch<br>
+                1425 James St., P.O. Box  4001<br>
+                Victoria (B.C.) V8X 3X4<br>
+            </address>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="40">
+            <span>Memo</span>
+            <mat-form-field class="input-memo">
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div fxFlex="25"></div>
+        <div fxFlex="30">
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+            <span>MP</span>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex="100">
+            <img class="image-footer" src="../../../assets/images/test1.png">
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

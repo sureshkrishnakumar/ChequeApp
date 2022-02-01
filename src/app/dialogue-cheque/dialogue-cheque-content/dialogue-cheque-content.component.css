@@ -1,0 +1,39 @@
+
+.mat-typography {
+    background-color: aliceblue;
+}
+.input-date {
+    width:10px;
+    text-align: center;
+}
+.input-amount {
+width:100px;
+}
+.input-name {
+    width: 450px;
+    left:-28px;
+}
+.label-pay-text {
+    text-align: left;
+    
+}
+.align-pay {
+    margin-top: 20px;
+}
+.input-amount-text {
+    width: 400px;
+    
+}
+.dollar-cls {
+    border: 1px solid;
+    width: 54px;
+    height: 76px;
+    background-color: black;
+}
+.icon-money{
+    color:white;
+    font-size: 67px;
+}
+.image-footer {
+    width:425px;
+}
