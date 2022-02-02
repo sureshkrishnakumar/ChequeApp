@@ -27,19 +27,19 @@ export class DialogueChequeContentComponent implements OnInit {
   }
   public getChequeAmount(){
     const selectedCurrencyType = currencyType[this.chequeData.currencyType];
-// this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
-//   try{
-//     if(data) {
-//       this.convertAmount = Number(data[`${selectedCurrencyType}_GBP`].val) * Number(this.chequeData.currencyAmount) ;
-//       this.numToWords(this.convertAmount);
-//     }
+this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
+  try{
+    if(data) {
+      this.convertAmount = Number(data[`${selectedCurrencyType}_GBP`].val) * Number(this.chequeData.currencyAmount) ;
+      this.numToWords(this.convertAmount);
+    }
    
-//   }
-//   catch(e) {
-//     console.error(e);
-//   }
+  }
+  catch(e) {
+    console.error(e);
+  }
   
-// });
+});
     }
     numToWords(convertAmount:Number):void{
       var nums = convertAmount.toString().split('.')
