@@ -15,7 +15,6 @@ import { currencyType } from './models/currencyType';
 export class AppComponent {
   contactForm: FormGroup = new FormGroup({
   });
-  title = 'app-material2';
   selected: string = '';
   form: FormGroup = new FormGroup({});
   currencies = [
@@ -27,7 +26,7 @@ export class AppComponent {
   ];
   chequeEntity = new Cheque({ userName: '', currencyAmount: 0, currencyType: currencyType.GBP, chequeDate: new Date });
   constructor(private fb: FormBuilder, public dialog: MatDialog) {
-
+//apply the validation on text fields
     this.form = fb.group({
       name: ['', [Validators.required]],
       currencyAmount: ['', [Validators.required, Validators.min(0), Validators.max(10000000000000)]],
@@ -35,7 +34,7 @@ export class AppComponent {
       chequeDate: ['', [Validators.required]]
     })
   }
-
+//Open dialogue box after click on Generate button
   chequeDialogue() {
     const dialogRef = this.dialog.open(DialogueChequeContentComponent,
       { width: '60%', height: '80%', data: this.chequeEntity }

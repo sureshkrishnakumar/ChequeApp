@@ -14,12 +14,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DialogueChequeContentComponent } from './dialogue-cheque/dialogue-cheque-content/dialogue-cheque-content.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-import { AmountToWordPipe } from './models/amount-to-word.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    DialogueChequeContentComponent,
-    AmountToWordPipe
+    DialogueChequeContentComponent
   ],
   imports: [
     BrowserModule,

@@ -23,9 +23,11 @@ export class DialogueChequeContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    //Convert date formate as YYYYMMDD
     this.chequeDateFormate = this.chequeData.chequeDate.toISOString().slice(0, 10).replace(/-/g, "");
     this.getChequeAmount()
   }
+  //Get the currency value and multiple with Amount
   public getChequeAmount() {
     const selectedCurrencyType = currencyType[this.chequeData.currencyType];
     this.currencySubscription = this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
@@ -45,6 +47,7 @@ export class DialogueChequeContentComponent implements OnInit, OnDestroy {
 
     });
   }
+  //Convert decimal currency amount to word
   numToWords(convertAmount: Number): void {
     var nums = convertAmount.toString().split('.')
     this.outputWords = converter.toWords(nums[0])

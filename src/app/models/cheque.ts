@@ -5,6 +5,7 @@ export class Cheque {
     currencyAmount: Number;
     currencyType: currencyType;
     chequeDate: Date;
+    //Initialise the default values
     constructor(cheque: Cheque) {
         this.userName = cheque.userName || '';
         this.currencyAmount = cheque.currencyAmount || 0;

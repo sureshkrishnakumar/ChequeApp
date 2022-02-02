@@ -12,6 +12,7 @@ export class ChequeService {
 
 
     }
+    //Get the currenct value by using currency converter API call
     getChequeAmount(selectedCurrencyType: string): Observable<any> {
         let observer: Subscriber<any>;
         const chequeurl = environment.CurrencyURL + `?q=${selectedCurrencyType}_GBP&compact=ultra&apiKey=6b84111511cf46f562e9`;
