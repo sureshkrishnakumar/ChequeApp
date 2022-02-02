@@ -5,7 +5,7 @@ export class Cheque {
     currencyAmount: Number;
     currencyType: currencyType;
     chequeDate: Date;
-    constructor(cheque:Cheque) {
+    constructor(cheque: Cheque) {
         this.userName = cheque.userName || '';
         this.currencyAmount = cheque.currencyAmount || 0;
         this.currencyType = cheque.currencyType || currencyType.GBP;

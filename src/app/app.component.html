@@ -1,18 +1,18 @@
-<div class ="row">
-<form fxLayout="column" fxLayoutAlign="space-round center" [formGroup]="form">
-  
-  <mat-form-field class="example-full-width">
-      <mat-label>User Name</mat-label>
+<div class="row">
+  <form fxLayout="column" fxLayoutAlign="space-round center" [formGroup]="form">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Payee Name</mat-label>
       <input matInput formControlName="name" [(ngModel)]="chequeEntity.userName">
       <mat-error *ngIf="form.get('name')?.hasError('required')">
         Name Field is required
       </mat-error>
-  </mat-form-field>
-   
-  <mat-form-field class="example-full-width">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
       <mat-label>Amount</mat-label>
-      <input type="number" matInput  formControlName="currencyAmount" [(ngModel)]="chequeEntity.currencyAmount">
-      
+      <input type="number" matInput formControlName="currencyAmount" [(ngModel)]="chequeEntity.currencyAmount">
+
       <mat-error *ngIf="form.get('currencyAmount')?.hasError('required')">
         Amount Field is required
       </mat-error>
@@ -22,31 +22,32 @@
       <mat-error *ngIf="form.get('currencyAmount')?.hasError('max')">
         Amount should be less than 10000000000000
       </mat-error>
-  </mat-form-field>
-<mat-form-field>
-  <mat-select [(value)]="selected" formControlName="Currencytext" [(ngModel)]="chequeEntity.currencyType">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(value)]="selected" formControlName="Currencytext" [(ngModel)]="chequeEntity.currencyType">
 
-    <mat-option *ngFor="let currency of currencies" [value]="currency.value">
-      {{currency.text}}
-    </mat-option>
+        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+          {{currency.text}}
+        </mat-option>
 
-  </mat-select>
-  <mat-error *ngIf="form.get('Currencytext')?.hasError('required')">
-    Currency Type Field is required
-  </mat-error>
-</mat-form-field>
+      </mat-select>
+      <mat-error *ngIf="form.get('Currencytext')?.hasError('required')">
+        Currency Type Field is required
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width" [style.width.px]=180>
-    <mat-label>Date</mat-label>
-    <input  matInput [matDatepicker]="picker" style="width:160px" formControlName="chequeDate" [(ngModel)]="chequeEntity.chequeDate">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-  <mat-error *ngIf="form.get('chequeDate')?.hasError('required')">
-    Date Field is required
-  </mat-error>
-  
-</mat-form-field>
-   
-  <button mat-raised-button color="accent" (click)="chequeDialogue()" [disabled]="!form.valid">Generate</button>
-</form>
+    <mat-form-field class="example-full-width" [style.width.px]=180>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" style="width:160px" formControlName="chequeDate"
+        [(ngModel)]="chequeEntity.chequeDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.get('chequeDate')?.hasError('required')">
+        Date Field is required
+      </mat-error>
+
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" (click)="chequeDialogue()" [disabled]="!form.valid">Generate</button>
+  </form>
 </div>

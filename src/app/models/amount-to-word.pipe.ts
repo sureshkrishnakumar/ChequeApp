@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
-   name: 'amountToWord'
+  name: 'amountToWord'
 })
 export class AmountToWordPipe implements PipeTransform {
   transform(value: any, args?: any): any {
