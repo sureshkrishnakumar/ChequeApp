@@ -1,20 +1,21 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Cheque } from 'src/app/models/cheque';
 import { ChequeService } from 'src/app/services/cheque.service';
 import * as converter from 'number-to-words';
 import { currencyType } from 'src/app/models/currencyType';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dialogue-cheque-content',
   templateUrl: './dialogue-cheque-content.component.html',
   styleUrls: ['./dialogue-cheque-content.component.css']
 })
-export class DialogueChequeContentComponent implements OnInit {
+export class DialogueChequeContentComponent implements OnInit, OnDestroy {
   chequeData:Cheque;
   convertAmount: number;
   outputWords=''
   chequeDateFormate = 'YYYMMDD';
-  
+  currencySubscription: Subscription = new Subscription;
   constructor(private injector: Injector, private chequeService: ChequeService) { 
     this.chequeData = this.injector.get(MAT_DIALOG_DATA,null);
     this.convertAmount =0;
@@ -27,10 +28,13 @@ export class DialogueChequeContentComponent implements OnInit {
   }
   public getChequeAmount(){
     const selectedCurrencyType = currencyType[this.chequeData.currencyType];
-this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
+    this.currencySubscription = this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
   try{
-    if(data) {
-      this.convertAmount = Number(data[`${selectedCurrencyType}_GBP`].val) * Number(this.chequeData.currencyAmount) ;
+    if(data[`${selectedCurrencyType}_GBP`]) {
+      this.convertAmount = Number(data[`${selectedCurrencyType}_GBP`]) * Number(this.chequeData.currencyAmount) ;
+      this.numToWords(this.convertAmount);
+    } else {
+      this.convertAmount = 0;
       this.numToWords(this.convertAmount);
     }
    
@@ -51,5 +55,7 @@ this.chequeService.getChequeAmount(selectedCurrencyType).subscribe(data => {
       this.outputWords +=  ' Pounds';
     }
     }
-    
+    ngOnDestroy() {
+      this.currencySubscription.unsubscribe()
+  } 
 }
